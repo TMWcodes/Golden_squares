@@ -119,6 +119,7 @@ describe 'make_snippet method' do
         expect(result).to eq("")
         end
     end
+    
     context 'given an of 7 words string' do
         it 'returns and empty string' do
         result = make_snippet("a b c d e f g")
@@ -142,3 +143,4 @@ describe 'count_words' do
     end
 end
 end
+
