@@ -11,3 +11,5 @@ during string interpolation nil can be converted to "" empty string. fix with .i
 "when we subtract #{var} from #{var2} we get #{var3}
 
 ```
+
+d
