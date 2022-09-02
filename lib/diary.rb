@@ -1,84 +1,36 @@
-class DiaryEntry
-  def initialize(title, contents = "A duck walked up to a lemonade stand and he said to the man running the stand, have you got any grapes?.The man said No, we just sell lemonade But its cold and it's fresh, and its all home-made. Can I get you a glass? The duck said “Ill pass.") # title, contents are strings
-    @title = title
-    @contents = contents
-    @last_read = 0
-  end
-
-  def title
-    # Returns the title as a string
-    @title
-  end
-
-  def contents
-    # Returns the contents as a string
-    @contents
-  end
-
-  def count_words
-    # Returns the number of words in the contents as an integer
-    counter = 0
-    words = @contents.split
-    words.each do |word| 
-      counter += 1
+class Diary
+    def initialize
+        @diary_entries = []
     end
-    counter
-  end
-
-  def reading_time(wpm) 
-    
-    time = count_words / wpm
-    if time < 1 
-     "under a minute"
-    else
-    time 
+  
+    def add(entry) # entry is an instance of DiaryEntry
+      # Returns nothing
+      @diary_entries << entry
     end
-
- 
-  end
-
-  def reading_chunk(wpm, minutes) 
-    # e.g. 2 minute reading at a pace of 20 words per minute
-    words = minutes * wpm 
-    content_array = @contents.split(" ")
-    chunk = content_array[@last_read, words]
-    if @last_read + words >= count_words 
-      @last_read = 0
-    else
-      @last_read = @last_read + words
+  
+    def all
+      # Returns a list of instances of DiaryEntry
+      @diary_entries 
     end
-    
-   
-    return chunk.join " "
-    
-    # alt solution  
-    # chunk = content_array.map.with_index do |word, index|
-    # word if index < words
-    # end
-    # read = chunk.compact!
-
-    # delete from array or index counter 
-    
-    
-
-
-   
-
-    # If called again, `reading_chunk` should return the next chunk, skipping
-    # what has already been read, until the contents is fully read.
-    # The next call after that it should restart from the beginning.
+  
+    def count_words
+      # Returns the number of words in all diary entries
+      # HINT: This method should make use of the `count_words` method on DiaryEntry.
+    end
+  
+    def reading_time(wpm) # wpm is an integer representing
+                          # the number of words the user can read per minute
+      # Returns an integer representing an estimate of the reading time in minutes
+      # if the user were to read all entries in the diary.
+    end
+  
+    def find_best_entry_for_reading_time(wpm, minutes)
+          # `wpm` is an integer representing the number of words the user can read
+          # per minute.
+          # `minutes` is an integer representing the number of minutes the user
+          # has to read.
+      # Returns an instance of diary entry representing the entry that is closest 
+      # to, but not over, the length that the user could read in the minutes they
+      # have available given their reading speed.
+    end
   end
-
-
-
-end
-
-diary = DiaryEntry.new("title", "A duck walked up to a lemonade stand and he said to the man running the stand, have you got any grapes?.The man said No, we just sell lemonade But its cold and it's fresh, and its all home-made. Can I get you a glass? The duck said “Ill pass.") 
-# contents = "A duck walked up to a lemonade stand and he said to the man running the stand, have you got any grapes?."
-# p contents.length
-# p contents.split(" ").count
-# p diary.count_words
-diary.reading_time(2)
-diary.reading_chunk(2,1)
-diary.reading_chunk(2,1)
-p diary.reading_chunk(2,1)
