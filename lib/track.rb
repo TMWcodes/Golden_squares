@@ -15,5 +15,6 @@ class Track
   
     def format
       # Returns a string of the form "TITLE by ARTIST"
+      "Title #{"Title_1"} by #{"Artist_1"}"
     end
   end

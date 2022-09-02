@@ -15,7 +15,13 @@ class MusicLibrary
     # Returns a list of track objects
   end
   
-  def search_by_title(keyword) # keyword is a string
+  def search_by_title(keyword) 
+    @tracks.map  do |track|
+      if track.title.include? keyword
+       return track
+      end
+    end
+    # keyword is a string
     # Returns a list of tracks with titles that include the keyword
   end
 end
