@@ -42,7 +42,7 @@ class DiaryEntry
     words = minutes * wpm 
     content_array = @contents.split(" ")
     chunk = content_array[@last_read, words]
-    if @last_read + words > count_words 
+    if @last_read + words >= count_words 
       @last_read = 0
     else
       @last_read = @last_read + words

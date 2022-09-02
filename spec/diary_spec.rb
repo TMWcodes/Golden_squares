@@ -38,7 +38,6 @@ describe DiaryEntry do
         diary.reading_chunk(2, 1)
         diary.reading_chunk(2, 1)
         diary.reading_chunk(2, 1)
-        diary.reading_chunk(2, 1)
         expect(diary.reading_chunk(2,1)).to eq("A duck")
 
      end
