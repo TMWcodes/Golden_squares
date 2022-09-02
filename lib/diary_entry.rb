@@ -72,13 +72,3 @@ class DiaryEntry
 
 
 end
-
-diary = DiaryEntry.new("title", "A duck walked up to a lemonade stand and he said to the man running the stand, have you got any grapes?.The man said No, we just sell lemonade But its cold and it's fresh, and its all home-made. Can I get you a glass? The duck said “Ill pass.") 
-# contents = "A duck walked up to a lemonade stand and he said to the man running the stand, have you got any grapes?."
-# p contents.length
-# p contents.split(" ").count
-# p diary.count_words
-diary.reading_time(2)
-diary.reading_chunk(2,1)
-diary.reading_chunk(2,1)
-p diary.reading_chunk(2,1)
