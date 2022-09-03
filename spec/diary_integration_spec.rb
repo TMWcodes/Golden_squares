@@ -10,6 +10,13 @@ describe 'diary_integration' do
             diary.add(entry_1)
             expect(diary.all).to eq([entry_1])
         end
+
+        it 'returns diary entry' do
+            diary = Diary.new
+            entry_x = DiaryEntry.new("title_x", "There was")
+            diary.add(entry_x)
+            expect(diary.find_best_entry_for_reading_time(2, 1)).to eq([entry_x])
+        end
     end
 
     context 'when given multiple entries' do
@@ -38,7 +45,7 @@ describe 'diary_integration' do
             # diary.find_best_entry_for_reading_time(2, 1) #=> ["There wasn't]
         end
 
-        it 'counts words' do
+        it 'counts reading time' do
             diary = Diary.new
             entry_1 = DiaryEntry.new("title_1", "There was a man")
             entry_2 = DiaryEntry.new("title_2", "There was a woman")
@@ -46,31 +53,33 @@ describe 'diary_integration' do
             diary.add(entry_2)
             expect(diary.reading_time(2)).to eq 4
         end
+
+        
         it 'finds the best entry for time' do
         diary = Diary.new
             entry_1 = DiaryEntry.new("title_1", "There was a man")
             entry_2 = DiaryEntry.new("title_2", "There was a woman")
             entry_3 = DiaryEntry.new("title_3", "There was a dog")
-            entry_3 = DiaryEntry.new("title_3", "There wasn't")
+            entry_4 = DiaryEntry.new("title_3", "There wasn't")
             entry_5 = DiaryEntry.new("title_1", "There was a dinosaur walking down the middle of the street")
             diary.add(entry_1)
             diary.add(entry_2)
             diary.add(entry_3)
             diary.add(entry_4)
             diary.add(entry_5)
-            expect(diary.find_best_entry_for_reading_time(2, 1)).to eq ["There wasn't"]
+            expect(diary.find_best_entry_for_reading_time(2, 1)).to eq([entry_4])
         end
     end
 
   
-    context 'in this situation' do
-        it 'does something' do
-            diary = Diary.new
-            # entry_1 = DiaryEntry.new("title_1", "There was a man")
-            # entry_4 = DiaryEntry.new("title_1", "There wasn't")
-            # entry_5 = DiaryEntry.new("title_1", "There was a dinosaur walking down the middle of the street")
-            # diary.all #=> [entry_1, entry_4, entry_5]
-            # diary.find_best_entry_for_reading_time(2, 1) #=> ["There wasn't]
-        end
-    end
+    # context 'in this situation' do
+    #     it 'does something' do
+    #         diary = Diary.new
+    #         # entry_1 = DiaryEntry.new("title_1", "There was a man")
+    #         # entry_4 = DiaryEntry.new("title_1", "There wasn't")
+    #         # entry_5 = DiaryEntry.new("title_1", "There was a dinosaur walking down the middle of the street")
+    #         # diary.all #=> [entry_1, entry_4, entry_5]
+    #         # diary.find_best_entry_for_reading_time(2, 1) #=> ["There wasn't]
+    #     end
+    # end
 end

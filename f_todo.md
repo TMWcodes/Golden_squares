@@ -18,24 +18,30 @@ remove marked task
 
 ```ruby
 class TodoList
-def initialize
+    def initialize
+    end
+
+    def add(task)
+    # task is a string
+    end
+
+
+    def see_tasks
+    # returns tasks excluding completed ones
+    end
+
+
+    def mark_complete(task)
+    # fails if task doesnt exist
+    end
+
+    def give_up!
+        # Marks all todos as complete
+    end
+
 end
 
-def add(task)
-# task is a string
-end
 
-
-def see_tasks
-# returns tasks excluding completed ones
-end
-
-
-def mark_complete(task)
-# fails if task doesnt exist
-end
-
-end
 
 ```
 
