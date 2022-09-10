@@ -3,45 +3,45 @@ require 'todolist.rb'
 describe TodoList do
     context 'given no tasks' do
         it'returns an empty string' do
-            todo = TodoList.new
-            expect(todo.list).to eq([])
+            todo_list = TodoList.new
+            expect(todo_list.list).to eq([])
         end
     end
 
     context 'given a task' do
         it'returns the task' do
-            todo = TodoList.new
-            todo.add("Do dishes")
-            expect(todo.list).to eq(["Do dishes"])
+            todo_list = TodoList.new
+            todo_list.add("Do dishes")
+            expect(todo_list.list).to eq(["Do dishes"])
         end
     end
 
     context 'when given multiple tasks' do
         it'shows a list of tasks' do
-            todo = TodoList.new
-            todo.add("Build table")
-            todo.add("Wash animals")
-            expect(todo.list).to eq(["Build table", "Wash animals"])
+            todo_list = TodoList.new
+            todo_list.add("Build table")
+            todo_list.add("Wash animals")
+            expect(todo_list.list).to eq(["Build table", "Wash animals"])
         end
     end
 
     context 'when a task is completed' do
         it'removes task for list' do
-            todo = TodoList.new
-            todo.add("Build table")
-            todo.add("Wash animals")
-            todo.complete("Wash animals")
-            expect(todo.list).to eq(["Build table"])
+            todo_list = TodoList.new
+            todo_list.add("Build table")
+            todo_list.add("Wash animals")
+            todo_list.complete("Wash animals")
+            expect(todo_list.list).to eq(["Build table"])
         end
     end
 
-    context 'when a non existent task is completed' do
-        it'' do
+    context 'no tasks are added' do
+        it 'fails' do
             todo = TodoList.new
             todo.add("Build table")
-todo.add("Wash animals")
-todo.list #=> ["Build table", "Wash animals]
-expect{todo.complete("smash glass")}.to raise_error " "
+            todo.add("Wash animals")
+            todo.list #=> ["Build table", "Wash animals]
+            expect{todo.complete("smash glass")}.to raise_error " "
         end
     end
 end

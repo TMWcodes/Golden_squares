@@ -70,6 +70,14 @@ describe 'todo integration' do
                 expect(todo_list.complete).to eq([todo1, todo2])  
             end
         end
+        it 'fails if contains string' do
+            todo_list = TodoList.new
+            todo_list.add("Build table")
+            todo1 = Todo.new("string time")
+            todo_list.add(todo1)
+            todo_list.give_up!
+            expect(todo_list.complete).to eq([todo1, todo2])  
+        end
     end
 
     # context '' do
